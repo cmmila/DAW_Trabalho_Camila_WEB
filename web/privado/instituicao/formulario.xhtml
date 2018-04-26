@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+     <ui:composition template="/templates/template.xhtml">
+          <ui:define name="titulo"> Edição da Instituição </ui:define>
+          <ui:define name="conteudo">
+              
+              <h:form>
+                  <div align="center">
+                  <p:growl>
+                      <p:panelGrid columns="2">
+                          <f:facet name="header">
+                              <p:outputLabel value="Edição da Instituição"/>
+                          </f:facet>
+                          <f:facet name="footer">
+                              
+                              <div align="center"> <br>
+                                  <p:commandButton value="Cancelar"
+                                                   action="#{controleInstituicao.cancelar()}"
+                                                   ajax="false" immediate="true"/>
+                                  
+                                  <p:commandButton value="Salvar" icon="ui-icon-disk"
+                                                   ajax="false" 
+                                                   action="#{controleInstituicao.salvar()}"/>
+
+                              <br></br>
+                                  
+                                    </br> </div>
+                              
+                              <p:outputLabel value="ID"/>
+                              <p:inputText value="#{controleInstituicao.objeto.id}" readonly="true" size="7"/>
+                              
+                              <p:outputLabel value="Nome" for="txtNome"/>
+                              <p:inputText id="txtNome" value="#{controleInstituicao.objeto.nome}"
+                                           size="40" maxlength="40" placeholder="Obrigatorio"/>
+
+                              <p:outputLabel value="AnoFundacao" for="txtAnoFundacao"/>       
+                              <p:calendar value="#{controleInstituicao.objeto.anoFundacao}" title="Ano Fundação"                                     
+                                          id="txtAnoFundacao" pattern="dd/MM/yyyy" locale="pt_BR" size="12" mask="true">
+                              <f:converter converterId="converterCalendar"/>
+                             </p:calendar>  
+                            
+                                           
+                          </f:facet>
+                      </p:panelGrid>
+                  </p:growl>
+                  </div>
+              </h:form>
+          </ui:define>
+      </ui:composition>
+</html>
+

@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+     <ui:composition template="/templates/template.xhtml">
+          <ui:define name="titulo"> Edição dos Professores </ui:define>
+          <ui:define name="conteudo">
+              
+              <h:form>
+                  <p:growl>
+                      <p:panelGrid columns="2">
+                          <f:facet name="header">
+                              <p:outputLabel value="Edição dos Professores"/>
+                          </f:facet>
+                          <f:facet name="footer">
+                              <div align="center">
+                                  <p:commandButton value="Cancelar"
+                                                   action="#{controleProfessor.cancelar()}"
+                                                   ajax="false" immediate="true"/>
+                                  
+                                  <p:commandButton value="Salvar" icon="ui-icon-disk"
+                                                   ajax="false" 
+                                                   action="#{controleProfessor.salvar()}"/>
+
+                              </div>
+                              
+                              <p:outputLabel value="ID"/>
+                              <p:inputText value="#{controleProfessor.objeto.id}" readonly="true" size="5"/>
+                              
+                              <p:outputLabel value="Nome" for="txtNome"/>
+                              <p:inputText id="txtNome" value="#{controleProfessor.objeto.nome}"
+                                           size="30" maxlength="30" placeholder="Obrigatorio"/>
+                              
+                              <p:outputLabel value="Email" for="txtEmail"/>
+                              <p:inputText id="txtEmail" value="#{controleProfessor.objeto.email}"
+                                           size="40" maxlength="60"/>
+                              
+                              <p:outputLabel value="Titulacao" for="txtTitulacao"/>
+                              <p:inputText id="txtTitulacao" value="#{controleProfessor.objeto.titulacao}"
+                                           size="20" maxlength="20"/>
+                              
+                              <p:outputLabel value="TopicosInteresse" for="txtTopicosInteresse"/>
+                              <p:inputText id="txtTopicosInteresse" value="#{controleProfessor.objeto.topicosInteresse}"
+                                           size="20" maxlength="40"/>
+                              
+                              <p:outputLabel value="Especialidades" for="selectEspecialidades"/>
+                              <p:selectOneMenu id="selectEspecialidades" value="#{controleProfessor.objeto.especialidades}">
+                                  <f:converter converterId="converterEspecialidade"/>
+                                  <f:selectItem noSelectionOption="true"
+                                                itemLabel="Selecione um registro"/>
+                                  
+                                  <f:selectItems value="#{controleProfessor.objeto.especialidades}"
+                                                 var="e" itemLabel="#{e.id}"/>
+                              </p:selectOneMenu>
+            
+                          </f:facet>
+                      </p:panelGrid>
+                  </p:growl>  
+              </h:form>
+          </ui:define>
+      </ui:composition>
+</html>
+
