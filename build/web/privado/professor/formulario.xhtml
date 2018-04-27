@@ -53,8 +53,8 @@
                                   <f:selectItem noSelectionOption="true"
                                                 itemLabel="Selecione um registro"/>
                                   
-                                  <f:selectItems value="#{controleProfessor.objeto.especialidades}"
-                                                 var="e" itemLabel="#{e.id}"/>
+                                  <f:selectItems value="#{controleProfessor.daoEspecialidade.lista}"
+                                                 var="e" itemLabel="#{e.nome}"/>
                               </p:selectOneMenu>
             
                           </f:facet>

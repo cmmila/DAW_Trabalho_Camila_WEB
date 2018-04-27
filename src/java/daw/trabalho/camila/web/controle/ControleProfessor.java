@@ -25,10 +25,16 @@ public class ControleProfessor implements Serializable {
    private ProfessorDAO dao; 
     private Professor objeto;
     private EspecialidadeDAO daoEspecialidade;
+    
+    public ControleProfessor() {
+        dao = new ProfessorDAO();
+        daoEspecialidade = new EspecialidadeDAO();
+    }
 
     public ProfessorDAO getDao() {
         return dao;
     }
+    
 
     public void setDao(ProfessorDAO dao) {
         this.dao = dao;
@@ -42,10 +48,7 @@ public class ControleProfessor implements Serializable {
         this.objeto = objeto;
     }
 
-    public ControleProfessor() {
-        dao = new ProfessorDAO();
-    }
-
+   
     public EspecialidadeDAO getDaoEspecialidade() {
         return daoEspecialidade;
     }
